@@ -77,14 +77,20 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 3rem;
-  max-width: 600px;
+  padding: 1.5rem; /* mobile-friendly default padding */
+  max-width: 800px;
   width: 100%;
   margin: 2rem auto; /* center card with margin at top and bottom */
   box-shadow: var(--glass-shadow);
   transform: translateY(20px);
   opacity: 0;
   animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    padding: 3rem; /* desktop padding */
+  }
 }
 
 @keyframes slideUp {
@@ -211,25 +217,16 @@ header {
 }
 
 .scrollable-tracks {
-  max-height: 350px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-right: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.scrollable-tracks::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollable-tracks::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 4px;
-}
-.scrollable-tracks::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+@media (min-width: 768px) {
+  .scrollable-tracks {
+    grid-template-columns: 1fr 1fr; /* side-by-side on larger screens */
+  }
 }
 
 .social-btn {
